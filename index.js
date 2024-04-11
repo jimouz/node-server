@@ -2,6 +2,7 @@
 // 
 // 
 // 
+// 
 
 const express = require("express");
 const chalk = require("chalk");
@@ -23,19 +24,23 @@ app.use(bodyParser.urlencoded({ extended:true}));
 
 const errorMsg = "Reading...";
 var opStatus = 0;
+
 // Action when the client is connected
 io.on("connection", (socket) => {
     console.log(chalk.inverse.green('---- User connected ----'));
     console.log(`Connection Time  : ${socket.handshake.time}`);
     console.log(`Socket ID        : ${socket.id}`);
     console.log(`Client IP        : ${socket.handshake.address.slice(7)}`);
+
 // Response to client when connected
     io.emit("connected", "Connection OK");
     // io.emit("stop");
+
 // Action when the client is disconnected
     socket.on("disconnect", () => {
         console.log(chalk.inverse.red('---- User disconnected ----'));
     });
+
 // Action when the client sends measured data
     socket.on("measures", (data) => {
         try {
@@ -113,7 +118,9 @@ app.get("/emgBtn", (req, res) => {
 app.get("/levelSensor", (req, res) => {
     console.log(chalk.inverse.redBright(`Level sensor --------`));
 });
-
+app.get("/rotaryEncoder", (res, req) => {
+    console.log(chalk.inverse.redBright(`Level sensor --------`));
+})
 server.listen(wsPort, () => { 
     console.log(chalk.inverse(`WS Server running on port ${wsPort}.`));
 });
