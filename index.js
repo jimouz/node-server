@@ -52,11 +52,13 @@ io.on("connection", (socket) => {
             opStatus = measureData.status;
             console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(measureData.sensorA[1])} Ω`));
             console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(measureData.sensorB[1])} Ω`));
-            console.log(`Status : ${chalk.inverse(opStatus)}`);
+            opStatus === true ? 
+                console.log(`Status : ${chalk.inverse.green(opStatus)}`): 
+                console.log(`Status : ${chalk.inverse.red(opStatus)}`);
             console.log(`-------------------------------`)
         }
         catch (e) {
-            console.log(errorMsg);
+            console.log(`${errorMsg} values!`);
         }
 
     });
@@ -67,12 +69,10 @@ app.get("/", (req, res) => {
         console.log(JSON.stringify(req.body));
         console.log(`Status: ${opStatus}`);
         res.render("index.ejs", { tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus });
-        // res.render ("index.ejs", {tempA: tempA, resA: resA, tempB: tempB, resB: resB});
     }
     catch {
         console.log(chalk.inverse.orange("Reading..."));
         res.render("index.ejs", { tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus });
-        // res.render ("index.ejs", {tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg});
 
     }
 });
@@ -81,12 +81,10 @@ app.get("/updateTemp", (req, res) => {
     try {
         console.log(chalk.inverse.cyan("Update data request from Web client OK"));
         res.send({ tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus });
-        // res.send ({tempA: tempA, resA: resA, tempB: tempB, resB: resB});
     }
     catch (e) {
         console.log(chalk.inverse.red("Update data request from Web client failed!"));
         res.send({ tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus });
-        // res.send ({tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg});
 
     }
 });
