@@ -1,0 +1,88 @@
+html {
+    background-color: #044;
+    background-image: url(/images/hexagons.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-blend-mode: color-burn;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-decoration: none;
+    margin: 0;
+    cursor: auto;
+}
+body {
+    margin: 0;
+}
+.root-div {
+    margin: auto;
+    text-align: center;
+}
+.control-panel {
+    max-width: 300px;
+    border: 1px solid #fffa;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:start;
+}
+.startBtn, .stopBtn {
+    /* margin: 4px; */
+    margin: 20px;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fffa;
+    border-radius: 8px;
+    background-color: #8888;
+}
+.stopBtn {
+    color: #f00;
+}
+.startBtn:hover, .stopBtn:hover {
+    box-shadow: 0 0 4px #fff;
+    cursor: pointer;
+    border-color: #fff;
+}
+.data-display-container {
+    display: grid;
+    grid-template-rows:  auto;
+    grid-template-columns: auto auto;
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    max-width: 300px;
+    text-align: center;
+}
+.container-item{
+    background-color: #8888;
+    min-width: 300px;
+    border: 1px solid #fffa;
+    border-radius: 8px;
+}
+.temp-display, .res-display, .my-time {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 4px;
+    color : coral;
+    background-color: #000;
+    border-radius: 8px;
+    font-size: 32px;
+}
+.my-time {
+    display: block;
+    width: 296px;
+    color: #aff;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    border: 1px solid #fffa;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 600px) {
+    .data-display-container {
+        grid-template-rows:  auto auto;
+        grid-template-columns: auto;
+    }
+    
+}
