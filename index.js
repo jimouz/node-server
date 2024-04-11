@@ -111,15 +111,15 @@ app.get("/stopBtn", (req, res) => {
 
 app.get("/emgBtn", (req, res) => {
     console.log(chalk.inverse.red("EMERGENCY Button pressed!"));
-    // status = 0;
-    // res.send({ sts: status });
+    opStatus = 0;
+    res.send({ sts: opStatus });
 
 });
 app.get("/levelSensor", (req, res) => {
     console.log(chalk.inverse.redBright(`Level sensor --------`));
 });
 app.get("/rotaryEncoder", (res, req) => {
-    console.log(chalk.inverse.redBright(`Level sensor --------`));
+    console.log(chalk.inverse.redBright(`Rotary push button --------`));
 })
 server.listen(wsPort, () => { 
     console.log(chalk.inverse(`WS Server running on port ${wsPort}.`));
