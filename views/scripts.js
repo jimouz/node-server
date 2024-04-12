@@ -14,11 +14,11 @@ function update_temp(){
             $('.resA').text(`${data.resA} Ω`);
             $('.tempB').text(`${data.tempB} °C`);
             $('.resB').text(`${data.resB} Ω`);
-            if (data.sts === true) 
+            if (data.sts === 1) 
             {
                 $('.startBtn').css('background-color', '#0f0');
             }
-            else if (data.sts === false) 
+            else if (data.sts === 0) 
             {
                 $('.startBtn').css('background-color', '#8888');
             }

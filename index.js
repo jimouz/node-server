@@ -52,7 +52,7 @@ io.on("connection", (socket) => {
             opStatus = measureData.status;
             console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(measureData.sensorA[1])} Ω`));
             console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(measureData.sensorB[1])} Ω`));
-            opStatus === true ? 
+            opStatus === 1 ? 
                 console.log(`Status : ${chalk.inverse.green(opStatus)}`): 
                 console.log(`Status : ${chalk.inverse.red(opStatus)}`);
             console.log(`-------------------------------`)
