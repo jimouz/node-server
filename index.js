@@ -52,7 +52,7 @@ io.on("connection", (socket) => {
             opStatus = measureData.status;
             console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(measureData.sensorA[1])} Ω`));
             console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(measureData.sensorB[1])} Ω`));
-            opStatus === 1 ? 
+            opStatus === true || opStatus === 1? 
                 console.log(`Status : ${chalk.inverse.green(opStatus)}`): 
                 console.log(`Status : ${chalk.inverse.red(opStatus)}`);
             console.log(`-------------------------------`)
@@ -96,20 +96,20 @@ app.get("/userTemp", (req, res) => {
 app.get("/startBtn", (req, res) => {
     io.emit("start");
     console.log(chalk.green("Start Button pressed!"));
-    opStatus = 1;
+    opStatus = true;
     res.send({ sts: opStatus });
 });
 
 app.get("/stopBtn", (req, res) => {
     io.emit("stop");
     console.log(chalk.red("Stop Button pressed!"));
-    opStatus = 0;
+    opStatus = false;
     res.send({ sts: opStatus });
 });
 
 app.get("/emgBtn", (req, res) => {
     console.log(chalk.inverse.red("EMERGENCY Button pressed!"));
-    opStatus = 0;
+    opStatus = false;
     res.send({ sts: opStatus });
 
 });
