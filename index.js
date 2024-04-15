@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended:true}));
 
 const errorMsg = "Reading...";
 var opStatus = 0;
-
+var cpuTemp = 0;
 // Action when the client is connected
 io.on("connection", (socket) => {
     console.log(chalk.inverse.green('---- User connected ----'));
@@ -39,6 +39,7 @@ io.on("connection", (socket) => {
 // Action when the client is disconnected
     socket.on("disconnect", () => {
         console.log(chalk.inverse.red('---- User disconnected ----'));
+        console.log(`Client IP        : ${socket.handshake.address.slice(7)}`);
     });
 
 // Action when the client sends measured data
@@ -50,11 +51,15 @@ io.on("connection", (socket) => {
             tempB = measureData.sensorB[0];
             resB = measureData.sensorB[1];
             opStatus = measureData.status;
-            console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(measureData.sensorA[1])} Ω`));
-            console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(measureData.sensorB[1])} Ω`));
+            cpuTemp = measureData.cpuTemp;
+            userTemp = measureData.userTemp;
+            console.log(`CPU Temperature     : ${cpuTemp} °C`);
+            console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(resA)} Ω`));
+            console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(resB)} Ω`));
             opStatus === true || opStatus === 1? 
                 console.log(`Status : ${chalk.inverse.green(opStatus)}`): 
                 console.log(`Status : ${chalk.inverse.red(opStatus)}`);
+            console.log(`User Temperature    : ${userTemp} °C`);
             console.log(`-------------------------------`)
         }
         catch (e) {
