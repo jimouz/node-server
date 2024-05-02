@@ -53,13 +53,17 @@ io.on("connection", (socket) => {
             opStatus = measureData.status;
             cpuTemp = measureData.cpuTemp;
             userTemp = measureData.userTemp;
+            tankLevel = measureData.tankLevel;
             console.log(`CPU Temperature     : ${cpuTemp} °C`);
             console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(resA)} Ω`));
             console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(resB)} Ω`));
             opStatus === true || opStatus === 1? 
                 console.log(`Status : ${chalk.inverse.green(opStatus)}`): 
                 console.log(`Status : ${chalk.inverse.red(opStatus)}`);
-            console.log(`User Temperature    : ${userTemp} °C`);
+            tankLevel === true || tankLevel === 1?
+                console.log(`Tank Level : ${chalk.inverse.red('MAX')}`):
+                console.log(`Tank Level : ${chalk.inverse.green('OK')}`); 
+            console.log(`Threshold    : ${userTemp} °C`);
             console.log(`-------------------------------`)
         }
         catch (e) {
