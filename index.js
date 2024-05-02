@@ -46,6 +46,7 @@ io.on("connection", (socket) => {
     socket.on("measures", (data) => {
         try {
             measureData = JSON.parse(data);
+            timeStamp = measureData.timeStamp;
             tempA = measureData.sensorA[0];
             resA = measureData.sensorA[1];
             tempB = measureData.sensorB[0];
@@ -54,6 +55,7 @@ io.on("connection", (socket) => {
             cpuTemp = measureData.cpuTemp;
             userTemp = measureData.userTemp;
             tankLevel = measureData.tankLevel;
+            console.log(`Timestamp           : ${timeStamp}`);
             console.log(`CPU Temperature     : ${cpuTemp} °C`);
             console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(resA)} Ω`));
             console.log(chalk.yellow(`Channel B : ${tempB} °C  ${chalk.inverse(resB)} Ω`));
