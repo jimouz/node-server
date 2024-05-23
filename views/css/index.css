@@ -15,7 +15,7 @@ body {
     text-align: center;
 }
 .control-panel {
-    max-width: 300px;
+    max-width: 290px;
     border: 1px solid #fffa;
     border-radius: 8px;
     display: flex;
@@ -40,6 +40,7 @@ body {
     border-color: #fff;
 }
 .data-display-container {
+
     display: grid;
     grid-template-rows:  auto;
     grid-template-columns: auto auto;
@@ -50,13 +51,12 @@ body {
 }
 .container-item{
     background-color: #aaa8;
-    min-width: 300px;
+    min-width: 290px;
     border: 1px solid #fffa;
     border-radius: 8px;
 }
 
 .temp-display, .res-display, .my-time {
-    padding: 4px;
     color: #444;
     border-radius: 8px;
     font-size: 32px;
@@ -67,7 +67,7 @@ body {
 .my-time, .cpu-temp {
     background-color: #ddd8;
     display: block;
-    width: 296px;
+    width: 290px;
     color: #444;
     font-weight: bold;
     text-align: center;
@@ -76,6 +76,7 @@ body {
     border-radius: 8px;
 }
 .cpuTemp {
+    
     font-size: 16px;
 }
 @media screen and (max-width: 600px) {

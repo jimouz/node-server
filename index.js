@@ -83,7 +83,7 @@ app.get("/", (req, res) => {
     }
     catch {
         console.log(chalk.inverse.orange("Reading..."));
-        res.render("index.ejs", { tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus });
+        res.render("index.ejs", { tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
 
     }
 });
@@ -95,7 +95,7 @@ app.get("/updateTemp", (req, res) => {
     }
     catch (e) {
         console.log(chalk.inverse.red("Update data request from Web client failed!"));
-        res.send({ tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus });
+        res.send({ tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
 
     }
 });
