@@ -1,11 +1,6 @@
 html {
-    background-color: #044;
-    background-image: url(/images/hexagons.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-blend-mode: color-burn;
-    color: #fff;
+    background-color: #fff;
+    color: #444;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 1px;
     text-decoration: none;
@@ -28,7 +23,6 @@ body {
     justify-content:start;
 }
 .startBtn, .stopBtn {
-    /* margin: 4px; */
     margin: 20px;
     font-weight: bold;
     width: 100px;
@@ -55,30 +49,35 @@ body {
     text-align: center;
 }
 .container-item{
-    background-color: #8888;
+    background-color: #aaa8;
     min-width: 300px;
     border: 1px solid #fffa;
     border-radius: 8px;
 }
+
 .temp-display, .res-display, .my-time {
-    font-family: 'Courier New', Courier, monospace;
     padding: 4px;
-    color : coral;
-    background-color: #000;
+    color: #444;
     border-radius: 8px;
     font-size: 32px;
 }
-.my-time {
+.res-display {
+    font-size: 16px;
+}
+.my-time, .cpu-temp {
+    background-color: #ddd8;
     display: block;
     width: 296px;
-    color: #aff;
+    color: #444;
     font-weight: bold;
     text-align: center;
     letter-spacing: 2px;
-    border: 1px solid #fffa;
+    /* border: 1px solid #444a; */
     border-radius: 8px;
 }
-
+.cpuTemp {
+    font-size: 16px;
+}
 @media screen and (max-width: 600px) {
     .data-display-container {
         grid-template-rows:  auto auto;

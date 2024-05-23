@@ -10,6 +10,7 @@ function update_temp(){
         method: 'GET',
         success: (data) => {
             console.log(data);
+            $('.cpuTemp').text(`${data.cpuTemp} °C`);
             $('.tempA').text(`${data.tempA} °C`);
             $('.resA').text(`${data.resA} Ω`);
             $('.tempB').text(`${data.tempB} °C`);

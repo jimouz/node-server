@@ -79,7 +79,7 @@ app.get("/", (req, res) => {
     try {
         console.log(JSON.stringify(req.body));
         console.log(`Status: ${opStatus}`);
-        res.render("index.ejs", { tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus });
+        res.render("index.ejs", { tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
     }
     catch {
         console.log(chalk.inverse.orange("Reading..."));
@@ -91,7 +91,7 @@ app.get("/", (req, res) => {
 app.get("/updateTemp", (req, res) => {
     try {
         console.log(chalk.inverse.cyan("Update data request from Web client OK"));
-        res.send({ tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus });
+        res.send({ tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
     }
     catch (e) {
         console.log(chalk.inverse.red("Update data request from Web client failed!"));
