@@ -3,14 +3,16 @@ $(document).ready( () => {
     setInterval(myClock, 1000);
     setInterval(update_temp, 1000);
 })
+
 // Update all values
 function update_temp(){
     $.ajax({
         url: '/updateTemp',
         method: 'GET',
         success: (data) => {
-            console.log(data);
+            // console.log(data);
             $('.cpuTemp').text(`${data.cpuTemp} °C`);
+            $('.user-temp').text(`${data.userTemp} °C`);
             $('.tempA').text(`${data.tempA} °C`);
             $('.resA').text(`${data.resA} Ω`);
             $('.tempB').text(`${data.tempB} °C`);
@@ -25,6 +27,17 @@ function update_temp(){
             }
         }
     });
+}
+function sliderInput() {
+    console.log(`Slider changed! ${userTemp}`);
+    // $.ajax({
+    //     url: '/sliderChange',
+    //     method: 'GET',
+    //     success: (data) => {
+        //         console.log(`Slider changed! ${userTemp}`);
+        //         $('.user-temp').text(`${data.userTemp}`);
+    //     }
+    // })
 }
 // Start button
 function startDist() {

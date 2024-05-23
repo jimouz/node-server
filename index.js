@@ -79,11 +79,11 @@ app.get("/", (req, res) => {
     try {
         console.log(JSON.stringify(req.body));
         console.log(`Status: ${opStatus}`);
-        res.render("index.ejs", { tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
+        res.render("index.ejs", { userTemp: userTemp, tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
     }
     catch {
         console.log(chalk.inverse.orange("Reading..."));
-        res.render("index.ejs", { tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
+        res.render("index.ejs", { userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
 
     }
 });
@@ -91,11 +91,11 @@ app.get("/", (req, res) => {
 app.get("/updateTemp", (req, res) => {
     try {
         console.log(chalk.inverse.cyan("Update data request from Web client OK"));
-        res.send({ tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
+        res.send({ userTemp: userTemp, tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
     }
     catch (e) {
         console.log(chalk.inverse.red("Update data request from Web client failed!"));
-        res.send({ tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
+        res.send({ userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
 
     }
 });
@@ -122,8 +122,10 @@ app.get("/emgBtn", (req, res) => {
     console.log(chalk.inverse.red("EMERGENCY Button pressed!"));
     opStatus = false;
     res.send({ sts: opStatus });
-
 });
+// app.get("/sliderChange", (req, res) => {
+//     res.send({ userTemp: userTemp });
+// })
 app.get("/levelSensor", (req, res) => {
     console.log(chalk.inverse.redBright(`Level sensor --------`));
 });

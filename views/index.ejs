@@ -11,24 +11,37 @@
     <div class="root-div">
       <h1>ED-1 Dashboard</h1>
       <p class="my-time"></p>
-      <p class="cpu-temp">
+      <div class="cpu-temp">
         CPU :
         <span class="cpuTemp"><%=cpuTemp %> °C</span>
-      </p>
+      </div>
       <div class="control-panel">
+        <div class="user-temp-display">
+          <span class="user-temp"><%=userTemp %> °C</span>
+        </div>
+        <div class="slider-container">
+          <input
+            class="slider"
+            oninput=""
+            type="range"
+            min="0"
+            max="150"
+            value="10"
+          />
+        </div>
         <div class="startBtn" onclick="startDist()"><h2>START</h2></div>
         <div class="stopBtn" onclick="stopDist()"><h2>STOP</h2></div>
       </div>
       <div class="data-display-container">
         <div class="container-item">
-          <h2>Sensor A</h2>
+          <h3>Sensor A</h3>
           <h2 class="temp-display tempA"><%=tempA %> °C</h2>
           <h2 class="res-display resA"><%=resA %> Ω</h2>
         </div>
         <div class="container-item">
-          <h2>Sensor B</h2>
+          <h3>Sensor B</h3>
           <h2 class="temp-display tempB"><%=tempB %> °C</h2>
-          <h2 class="res-display resB"><%=resB %> Ω</h2>
+          <h4 class="res-display resB"><%=resB %> Ω</h4>
         </div>
       </div>
     </div>
