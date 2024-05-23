@@ -12,6 +12,7 @@ function update_temp(){
         success: (data) => {
             // console.log(data);
             $('.cpuTemp').text(`${data.cpuTemp} °C`);
+            document.querySelector('.slider').value=Number(data.userTemp);
             $('.user-temp').text(`${data.userTemp} °C`);
             $('.tempA').text(`${data.tempA} °C`);
             $('.resA').text(`${data.resA} Ω`);
