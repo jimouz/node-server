@@ -1,7 +1,14 @@
+let sliderValue = 0;
 $(document).ready( () => {
     // myClock();
     setInterval(myClock, 1000);
     setInterval(update_temp, 1000);
+    // Slider input
+    document.querySelector('.slider').oninput = function() {
+        sliderValue = document.querySelector('.slider').value;
+        $('.user-temp').text(`${document.querySelector('.slider').value} °C`);
+        sliderInput();
+    }
 })
 
 // Update all values
@@ -13,7 +20,7 @@ function update_temp(){
             // console.log(data);
             $('.cpuTemp').text(`${data.cpuTemp} °C`);
             document.querySelector('.slider').value=Number(data.userTemp);
-            $('.user-temp').text(`${data.userTemp} °C`);
+            $('.user-temp').text(`${document.querySelector('.slider').value} °C`);
             $('.tempA').text(`${data.tempA} °C`);
             $('.resA').text(`${data.resA} Ω`);
             $('.tempB').text(`${data.tempB} °C`);
@@ -29,16 +36,20 @@ function update_temp(){
         }
     });
 }
+// Slider input
 function sliderInput() {
-    console.log(`Slider changed! ${userTemp}`);
-    // $.ajax({
-    //     url: '/sliderChange',
-    //     method: 'GET',
-    //     success: (data) => {
-        //         console.log(`Slider changed! ${userTemp}`);
-        //         $('.user-temp').text(`${data.userTemp}`);
-    //     }
-    // })
+    console.log(`Slider changed!`);
+    $.ajax({
+        url: '/sliderChange',
+        method: 'POST',
+        data: {
+             userTemp: sliderValue
+        },
+        success: (data) => {
+                console.log(`Slider changed! ${userTemp}`);
+                $('.user-temp').text(`${data.userTemp}`);
+        }
+    })
 }
 // Start button
 function startDist() {

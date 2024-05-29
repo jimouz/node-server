@@ -123,9 +123,13 @@ app.get("/emgBtn", (req, res) => {
     opStatus = false;
     res.send({ sts: opStatus });
 });
-// app.get("/sliderChange", (req, res) => {
-//     res.send({ userTemp: userTemp });
-// })
+app.post("/sliderChange", (req, res, data) => {
+    let userTemp = req.body.userTemp;
+    // TO-DO --> send slider value to IOT hardware
+    // io.emit();
+    console.log(chalk.red(`Slider changed!! ${userTemp}`));
+    res.send({ userTemp: userTemp });
+})
 app.get("/levelSensor", (req, res) => {
     console.log(chalk.inverse.redBright(`Level sensor --------`));
 });
