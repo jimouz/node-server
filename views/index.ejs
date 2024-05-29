@@ -8,29 +8,33 @@
     <title>ED-1 Dashboard</title>
   </head>
   <body>
-    <div class="root-div">
+    <header>
       <h1>ED-1 Dashboard</h1>
-      <p class="my-time"></p>
-      <div class="cpu-temp">
-        CPU :
-        <span class="cpuTemp"><%=cpuTemp %> °C</span>
-      </div>
-      <div class="control-panel">
-        <div class="user-temp-display">
-          <span class="user-temp"><%=userTemp %> °C</span>
+    </header>
+    <div class="root-div">
+      <div>
+        <p class="my-time"></p>
+        <div class="cpu-temp">
+          CPU :
+          <span class="cpuTemp"><%=cpuTemp %> °C</span>
         </div>
-        <div class="slider-container">
-          <input
-            class="slider"
-            oninput=""
-            type="range"
-            min="0"
-            max="150"
-            value="<%=userTemp %>"
-          />
+        <div class="control-panel">
+          <div class="user-temp-display">
+            <span class="user-temp"><%=userTemp %> °C</span>
+          </div>
+          <div class="slider-container">
+            <input
+              class="slider"
+              oninput=""
+              type="range"
+              min="0"
+              max="150"
+              value="<%=userTemp %>"
+            />
+          </div>
+          <div class="startBtn" onclick="startDist()"><h2>START</h2></div>
+          <div class="stopBtn" onclick="stopDist()"><h2>STOP</h2></div>
         </div>
-        <div class="startBtn" onclick="startDist()"><h2>START</h2></div>
-        <div class="stopBtn" onclick="stopDist()"><h2>STOP</h2></div>
       </div>
       <div class="data-display-container">
         <div class="container-item">

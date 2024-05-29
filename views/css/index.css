@@ -1,23 +1,39 @@
 html {
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: linear-gradient(to bottom, #fff, #ddd);
     color: #444;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 1px;
     text-decoration: none;
     margin: 0;
     cursor: auto;
+    min-height: 100vh;
 }
 body {
     margin: 0;
 }
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    text-align: center;
+    background-color: #8888;
+}
 .root-div {
+    margin-top: 120px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    width: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
     text-align: center;
 }
 .control-panel {
     max-width: 290px;
-    border: 1px solid #fffa;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -71,7 +87,7 @@ body {
     border-radius: 0px;
 }
 .startBtn, .stopBtn {
-    margin: 20px;
+    margin: auto;
     font-weight: bold;
     width: 100px;
     height: 100px;
@@ -97,8 +113,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-rows:  auto;
-    grid-template-columns: auto auto;
+    grid-template-rows:  auto auto;
+    grid-template-columns: auto;
     grid-column-gap: 8px;
     grid-row-gap: 8px;
     max-width: 300px;
@@ -133,6 +149,10 @@ body {
     font-size: 16px;
 }
 @media screen and (max-width: 600px) {
+    .root-div {
+        grid-template-rows:  auto auto;
+        grid-template-columns: auto;
+    }
     .data-display-container {
         grid-template-rows:  auto auto;
         grid-template-columns: auto;
