@@ -8,9 +8,10 @@ const express = require("express");
 const chalk = require("chalk");
 const server = require("http").createServer(express);
 const bodyParser = require("body-parser");
-// const { request } = require("http");
 const io = require("socket.io")(server);
 const ejs = require("ejs");
+const buttonRouter = require("./routers/buttons")(io);
+// const { request } = require("http");
 
 const app = express();
 
@@ -21,10 +22,13 @@ const httpPort = 3001;
 
 app.use(express.static("views"));
 app.use(bodyParser.urlencoded({ extended:true}));
+app.use(buttonRouter);
 
+// Starting conditions
 const errorMsg = "Reading...";
 var opStatus = 0;
 var cpuTemp = 0;
+
 // Action when the client is connected
 io.on("connection", (socket) => {
     console.log(chalk.inverse.green('---- User connected ----'));
@@ -102,34 +106,16 @@ app.get("/updateTemp", (req, res) => {
 
 app.get("/userTemp", (req, res) => {
     console.log(chalk.inverse.yellow(`User temperature : `));
-})
-
-app.get("/startBtn", (req, res) => {
-    io.emit("start");
-    console.log(chalk.green("Start Button pressed!"));
-    opStatus = true;
-    res.send({ sts: opStatus });
 });
 
-app.get("/stopBtn", (req, res) => {
-    io.emit("stop");
-    console.log(chalk.red("Stop Button pressed!"));
-    opStatus = false;
-    res.send({ sts: opStatus });
-});
-
-app.get("/emgBtn", (req, res) => {
-    console.log(chalk.inverse.red("EMERGENCY Button pressed!"));
-    opStatus = false;
-    res.send({ sts: opStatus });
-});
 app.post("/sliderChange", (req, res, data) => {
     let userTemp = req.body.userTemp;
     // TO-DO --> send slider value to IOT hardware
     // io.emit();
     console.log(chalk.red(`Slider changed!! ${userTemp}`));
     res.send({ userTemp: userTemp });
-})
+});
+
 app.get("/levelSensor", (req, res) => {
     console.log(chalk.inverse.redBright(`Level sensor --------`));
 });
