@@ -107,6 +107,7 @@ header {
     width: 280px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
 
 .data-display-container {
@@ -144,6 +145,9 @@ header {
     text-align: center;
     letter-spacing: 2px;
     border-radius: 8px;
+}
+.my-time {
+    margin-top: 0px;
 }
 .cpuTemp {
     font-size: 16px;
