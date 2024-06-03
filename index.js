@@ -108,10 +108,10 @@ app.get("/userTemp", (req, res) => {
     console.log(chalk.inverse.yellow(`User temperature : `));
 });
 
+// Send slider value to IOT hardware
 app.post("/sliderChange", (req, res, data) => {
     let userTemp = req.body.userTemp;
-    // TO-DO --> send slider value to IOT hardware
-    // io.emit();
+    io.emit("sliderChange", userTemp);
     console.log(chalk.red(`Slider changed!! ${userTemp}`));
     res.send({ userTemp: userTemp });
 });
