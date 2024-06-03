@@ -10,7 +10,7 @@ const server = require("http").createServer(express);
 const bodyParser = require("body-parser");
 const io = require("socket.io")(server);
 const ejs = require("ejs");
-const buttonRouter = require("./routers/buttons")(io);
+const buttonRouter = require("./routers/buttons")(io, opStatus);
 // const { request } = require("http");
 
 const app = express();

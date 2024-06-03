@@ -48,6 +48,7 @@ function sliderInput() {
         success: (data) => {
                 console.log(`Slider changed! ${userTemp}`);
                 $('.user-temp').text(`${data.userTemp}`);
+                
         }
     })
 }
@@ -58,7 +59,6 @@ function startDist() {
         method: 'GET',
         success: (data) => {
             console.log(`Start Button pressed! ${data} `);
-            $('.startBtn').css('background-color', '#0f0');
         }
     });
 }
@@ -69,7 +69,6 @@ function stopDist() {
         method: 'GET',
         success: (data) => {
             console.log(`Stop Button pressed! ${data}`);
-            $('.startBtn').css('background-color', '#8888');
         }
     });
 }
