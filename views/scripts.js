@@ -38,7 +38,6 @@ function update_temp(){
 }
 // Slider input
 function sliderInput() {
-    console.log(`Slider changed!`);
     $.ajax({
         url: '/sliderChange',
         method: 'POST',
@@ -46,7 +45,7 @@ function sliderInput() {
              userTemp: sliderValue
         },
         success: (data) => {
-                console.log(`Slider changed! ${userTemp}`);
+                console.log(`Slider changed! ${data.userTemp}`);
                 $('.user-temp').text(`${data.userTemp}`);
                 
         }
