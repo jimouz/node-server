@@ -46,8 +46,7 @@ function sliderInput() {
         },
         success: (data) => {
                 console.log(`Slider changed! ${data.userTemp}`);
-                $('.user-temp').text(`${data.userTemp}`);
-                
+                $('.user-temp').text(`${data.userTemp}`); 
         }
     })
 }

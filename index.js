@@ -88,7 +88,6 @@ app.get("/", (req, res) => {
     catch {
         console.log(chalk.inverse.orange("Reading..."));
         res.render("index.ejs", { userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
-
     }
 });
 
@@ -112,8 +111,8 @@ app.get("/userTemp", (req, res) => {
 app.post("/sliderChange", (req, res, data) => {
     let userTemp = req.body.userTemp;
     io.emit("sliderChange", userTemp);
-    console.log(chalk.red(`Slider changed!! ${userTemp}`));
     res.send({ userTemp: userTemp });
+    console.log(chalk.red(`Slider changed!! ${userTemp}`));
 });
 
 app.get("/levelSensor", (req, res) => {
