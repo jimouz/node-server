@@ -20,20 +20,20 @@ header {
     background-color: #8888;
 }
 .root-div {
-    margin-top: 120px;
+    margin-top: 100px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     width: auto;
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: auto;
+    grid-template-rows: auto auto;
     grid-column-gap: 8px;
     grid-row-gap: 8px;
     text-align: center;
 }
 .control-panel {
-    max-width: 290px;
+    max-width: 300px;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -49,6 +49,8 @@ header {
     width: 100%;
     padding-top: 30px;
     border-radius: 8px;
+    /* border: 2px groove #4444; */
+    background: linear-gradient(#aaa, #ddd, #aaa);
 }
 .user-temp {
     margin-left: auto;
@@ -59,6 +61,7 @@ header {
 .slider {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
@@ -92,7 +95,7 @@ header {
     border-radius: 0px;
 }
 .startBtn, .stopBtn {
-    margin: auto;
+    margin: 0 auto;
     font-weight: bold;
     width: 100px;
     height: 100px;
@@ -113,9 +116,11 @@ header {
     width: 280px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
-
+label {
+    font-weight: bold;
+}
 .data-display-container {
     margin-left: auto;
     margin-right: auto;
@@ -147,7 +152,7 @@ header {
     margin-right: auto;
     background-color: #ddd8;
     display: block;
-    width: 290px;
+    width: 300px;
     color: #444;
     font-weight: bold;
     text-align: center;
@@ -157,14 +162,47 @@ header {
 .my-time {
     margin-top: 0px;
     box-shadow: #444 2px 2px 4px;
-
 }
 .cpu-temp {
     box-shadow: #444 2px 2px 4px;
 }
 .cpuTemp {
     font-size: 16px;
-    
+}
+.indicator-container {
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns:  auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+.indicator {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 18px;
+    width: 122  px;
+    height: 40px;
+    box-shadow: #444 2px 2px 4px;
+    border-radius: 8px;
+}
+.output-off {
+    background: linear-gradient(#fff, #f004);
+}
+.level-off {
+    background: linear-gradient(#fff, #08f4);
+}
+.emg-off {
+    background: linear-gradient(#fff, #aaa4);
+}
+
+footer {
+    margin-top: 40px;
+    height: 300px;
+    background: linear-gradient(#aaa, #fff);
 }
 @media screen and (max-width: 600px) {
     .root-div {
@@ -175,5 +213,7 @@ header {
         grid-template-rows:  auto auto;
         grid-template-columns: auto;
     }
-    
+    footer {
+        height: 100px;
+    }
 }

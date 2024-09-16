@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>ED-1 Dashboard</h1>
+      <h2>ED-1 Dashboard</h2>
     </header>
     <div class="root-div">
       <div>
@@ -31,6 +31,7 @@
               max="150"
               value="<%=userTemp %>"
             />
+            <label>- Temperature Adjust +</label>
           </div>
           <div class="startBtn" onclick="startDist()"><h2>START</h2></div>
           <div class="stopBtn" onclick="stopDist()"><h2>STOP</h2></div>
@@ -48,7 +49,14 @@
           <h4 class="res-display resB"><%=resB %> Ω</h4>
         </div>
       </div>
+      <div class="indicator-container">
+        <div class="indicator output-off">Output 1</div>
+        <div class="indicator output-off">Output 2</div>
+        <div class="indicator level-off">Level</div>
+        <div class="indicator emg-off">EMG</div>
+      </div>
     </div>
+    <footer></footer>
     <script src="/scripts.js"></script>
   </body>
 </html>
