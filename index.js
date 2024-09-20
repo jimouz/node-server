@@ -28,7 +28,8 @@ app.use(buttonRouter);
 const errorMsg = "Reading...";
 var opStatus = 0;
 var cpuTemp = 0;
-
+var out1 = 0;
+var out2 = 0;
 // Action when the client is connected
 io.on("connection", (socket) => {
     console.log(chalk.inverse.green('---- User connected ----'));
@@ -59,6 +60,8 @@ io.on("connection", (socket) => {
             cpuTemp = measureData.cpuTemp;
             userTemp = measureData.userTemp;
             tankLevel = measureData.tankLevel;
+            out1=measureData.out1;
+            out2=measureData.out2;
             console.log(`Timestamp            : ${timeStamp}`);
             console.log(`CPU Temperature      : ${cpuTemp} °C`);
             console.log(chalk.green(`Channel A : ${tempA} °C  ${chalk.inverse(resA)} Ω`));
@@ -70,6 +73,8 @@ io.on("connection", (socket) => {
                 console.log(`Tank Level : ${chalk.inverse.red('MAX').padStart(35)}`):
                 console.log(`Tank Level : ${chalk.inverse.green('OK').padStart(35)}`); 
             console.log(`Threshold  : ${userTemp.toString().padStart(16)} °C`);
+            console.log(`Output 1             : ${out1}`);
+            console.log(`Output 2             : ${out2}`);
             console.log(`-------------------------------`)
         }
         catch (e) {
@@ -83,22 +88,22 @@ app.get("/", (req, res) => {
     try {
         console.log(JSON.stringify(req.body));
         console.log(`Status: ${opStatus}`);
-        res.render("index.ejs", { userTemp: userTemp, tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
+        res.render("index.ejs", { userTemp: userTemp, tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp, out1: out1, out2: out2, tankLevel: tankLevel });
     }
     catch {
         console.log(chalk.inverse.orange("Reading..."));
-        res.render("index.ejs", { userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
+        res.render("index.ejs", { userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg, out1: out1, out2: out2, tankLevel: tankLevel });
     }
 });
 
 app.get("/updateTemp", (req, res) => {
     try {
         console.log(chalk.inverse.cyan("Update data request from Web client OK"));
-        res.send({ userTemp: userTemp, tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp });
+        res.send({ userTemp: userTemp, tempA: tempA, resA: resA, tempB: tempB, resB: resB, sts: opStatus, cpuTemp: cpuTemp, out1: out1, out2: out2, tankLevel: tankLevel });
     }
     catch (e) {
         console.log(chalk.inverse.red("Update data request from Web client failed!"));
-        res.send({ userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg });
+        res.send({ userTemp: errorMsg, tempA: errorMsg, resA: errorMsg, tempB: errorMsg, resB: errorMsg, sts: opStatus, cpuTemp: errorMsg, out1: out1, out2: out2, tankLevel: tankLevel });
 
     }
 });
