@@ -1,6 +1,10 @@
 html {
-    /* background-color: #fff; */
-    background-image: linear-gradient(to bottom, #fff, #ddd);
+    background-image: url('../images/bg-01.png');
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+    background-blend-mode: darken;
+    background-color: #ff48;
     color: #444;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 1px;
@@ -10,18 +14,35 @@ html {
     min-height: 100vh;
 }
 body {
+    background-color: #fffb;
     margin: 0;
+    padding-top: 10px;
 }
 header {
     position: fixed;
     top: 0;
     width: 100vw;
     text-align: center;
-    background-color: #8888;
+    background-color: #fffb;
+    display: grid;
+    grid-template-columns: 70% auto;
+    text-align: left;
+}
+.head {
+    margin: 10px 0px 10px 10px;
+}
+.date {
+    border-radius: 8px;
+    border: 1px solid #aaaa;
+    background-color: #fff;
+    /* box-shadow: #444 2px 2px 4px; */
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    margin: 12px 12px 12px 12px;
 }
 .indicator-container {
     column-span: 2;
-    margin: 10px auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto;
@@ -51,7 +72,7 @@ header {
     background: linear-gradient(#fff, #aaa4);
 }
 .root-div {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -74,6 +95,7 @@ header {
     padding: 8px;
     margin-top: 8px;
     box-shadow: #444 2px 2px 4px;
+    background-color: #eee;
 }
 .user-temp-display {
     height: 80px;
@@ -168,12 +190,12 @@ label {
     min-width: 290px;
     border-radius: 8px;
     box-shadow: #444 2px 2px 4px;
+    background-color: #eee;
 }
 .temp-display, .res-display, .my-time {
     color: #444;
     border-radius: 8px;
-    font-size: 32px;
-    
+    font-size: 32px;  
 }
 .res-display {
     font-size: 16px;
@@ -181,7 +203,7 @@ label {
 .my-time, .cpu-temp {
     margin-left: auto;
     margin-right: auto;
-    background-color: #ddd8;
+    background-color: #eee;
     display: block;
     width: 300px;
     color: #444;
@@ -203,13 +225,30 @@ label {
 
 footer {
     margin-top: 40px;
-    height: 300px;
-    background: linear-gradient(#aaa, #fff);
+    height: 160px;
+    background: linear-gradient(#999b, #fffe);
 }
 @media screen and (max-width: 600px) {
+    .body {
+        padding-top: 300px;
+    }
     .root-div {
         grid-template-rows:  auto auto;
         grid-template-columns: auto;
+    }
+    .header {
+        grid-template-rows: auto auto;
+        grid-template-columns: auto;
+    }
+    .head {
+        margin-top: 12px;
+    }
+    .date {
+        margin: 10px;
+        grid-column: 2 / 2;
+        text-align: left;
+        max-width: fit-content;
+        font-size: 10px;
     }
     .data-display-container {
         grid-template-rows:  auto auto;

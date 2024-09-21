@@ -1,6 +1,6 @@
 let sliderValue = 0;
 $(document).ready( () => {
-    // myClock();
+    setInterval(myDate, 1000);
     setInterval(myClock, 1000);
     setInterval(update_temp, 1000);
     // Slider input
@@ -94,4 +94,19 @@ function myClock() {
     var m = addZero(date.getMinutes());
     var s = addZero(date.getSeconds());
     $('.my-time').text(h + ':' + m + ':' + s);
+}
+
+function myDate() {
+    const month = ['January', 'February',
+                    'March', 'April', 'May',
+                    'June', 'July', 'August',
+                    'September', 'October',
+                    'November', 'December'];
+    const weekday = ['Sunday', 'Monday',
+                    'Tuesday', 'Wednesday',
+                    'Thursday', 'Friday', 'Saturday'];
+    const newDate = new Date();
+    fullDate = (`${weekday[newDate.getDay()]} ${newDate.getDate()} ${month[newDate.getMonth()]} ${newDate.getFullYear()}`);
+    fullDateSmall = (`${newDate.getDate()} ${month[newDate.getMonth()].slice(0, 3)} ${newDate.getFullYear()}`);
+    screen.width < 600 ? $('.date').text(fullDateSmall): $('.date').text(fullDate);
 }
